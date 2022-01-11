@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\ziom5\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ziom5\\.nuget\\packages"
+    ]
+  }
+}
