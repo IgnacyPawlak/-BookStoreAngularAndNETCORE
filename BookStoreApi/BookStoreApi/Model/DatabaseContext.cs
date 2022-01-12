@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BookStoreApi.Model
 {
-    public class DatabaseContext:DbContext
+    public class DatabaseContext: IdentityDbContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options):base(options)
+        public DatabaseContext(DbContextOptions options):base(options)
         {
 
         }
@@ -16,6 +17,8 @@ namespace BookStoreApi.Model
         {
             optionsBuilder.UseSqlite("Data Source=bookStore.db");
         }
+
+        public virtual DbSet<BookStoreUser> BookStoreUsers { get; set; }
 
         public virtual DbSet<Book> Books { get; set; }
     }

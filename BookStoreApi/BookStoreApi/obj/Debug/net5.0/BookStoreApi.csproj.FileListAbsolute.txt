@@ -153,3 +153,13 @@ D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\ne
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\BookStoreApi.StaticWebAssets.xml
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\obj\Debug\net5.0\staticwebassets\BookStoreApi.StaticWebAssets.xml

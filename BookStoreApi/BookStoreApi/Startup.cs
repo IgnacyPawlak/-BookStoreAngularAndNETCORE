@@ -1,6 +1,7 @@
 using BookStoreApi.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,18 @@ namespace BookStoreApi
             services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlite(Configuration.GetConnectionString("BookStoreContextConntection")));
 
+            services.AddDefaultIdentity<BookStoreUser>()
+                .AddEntityFrameworkStores<DatabaseContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
+            });
+
             services.AddCors();
         }
 
@@ -59,6 +72,7 @@ namespace BookStoreApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
