@@ -1,29 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\studia\\strony_internetowe\\VisualStudio\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj": {}
+    "C:\\Users\\dagma\\Documents\\GitHub\\BookStoreAngularAndNETCORE\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj": {}
   },
   "projects": {
-    "D:\\studia\\strony_internetowe\\VisualStudio\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj": {
+    "C:\\Users\\dagma\\Documents\\GitHub\\BookStoreAngularAndNETCORE\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\studia\\strony_internetowe\\VisualStudio\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj",
+        "projectUniqueName": "C:\\Users\\dagma\\Documents\\GitHub\\BookStoreAngularAndNETCORE\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj",
         "projectName": "BookStoreApi",
-        "projectPath": "D:\\studia\\strony_internetowe\\VisualStudio\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj",
-        "packagesPath": "C:\\Users\\ziom5\\.nuget\\packages\\",
-        "outputPath": "D:\\studia\\strony_internetowe\\VisualStudio\\BookStoreApi\\BookStoreApi\\obj\\",
+        "projectPath": "C:\\Users\\dagma\\Documents\\GitHub\\BookStoreAngularAndNETCORE\\BookStoreApi\\BookStoreApi\\BookStoreApi.csproj",
+        "packagesPath": "C:\\Users\\dagma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dagma\\Documents\\GitHub\\BookStoreAngularAndNETCORE\\BookStoreApi\\BookStoreApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ziom5\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\dagma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.emzi0767.com/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -86,12 +89,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -100,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

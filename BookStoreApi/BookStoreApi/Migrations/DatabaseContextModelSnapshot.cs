@@ -39,6 +39,36 @@ namespace BookStoreApi.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("BookStoreApi.Model.FavoriteBook", b =>
+                {
+                    b.Property<string>("HolderId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("HolderId");
+
+                    b.ToTable("FavoriteBooks");
+                });
+
+            modelBuilder.Entity("BookStoreApi.Model.Note", b =>
+                {
+                    b.Property<int>("noteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("bookId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("comment")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("noteId");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

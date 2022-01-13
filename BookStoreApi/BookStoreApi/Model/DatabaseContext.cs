@@ -22,6 +22,7 @@ namespace BookStoreApi.Model
 
         public virtual DbSet<Book> Books { get; set; }
 
+        public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<FavoriteBook> FavoriteBooks { get; set; }
     }
 }

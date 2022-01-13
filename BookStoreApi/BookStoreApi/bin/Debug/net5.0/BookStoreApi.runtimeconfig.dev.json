@@ -1,8 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\ziom5\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\ziom5\\.nuget\\packages"
+      "C:\\Users\\dagma\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\dagma\\.nuget\\packages",
+      "C:\\Microsoft\\Xamarin\\NuGet"
     ]
   }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookStoreApi.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class updt1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,6 +62,32 @@ namespace BookStoreApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FavoriteBooks",
+                columns: table => new
+                {
+                    HolderId = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteBooks", x => x.HolderId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notes",
+                columns: table => new
+                {
+                    noteId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    userId = table.Column<int>(type: "INTEGER", nullable: false),
+                    bookId = table.Column<int>(type: "INTEGER", nullable: false),
+                    comment = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notes", x => x.noteId);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,6 +253,12 @@ namespace BookStoreApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Books");
+
+            migrationBuilder.DropTable(
+                name: "FavoriteBooks");
+
+            migrationBuilder.DropTable(
+                name: "Notes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreApi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220112090326_initialCreate")]
-    partial class initialCreate
+    [Migration("20220113162750_updt1")]
+    partial class updt1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,36 @@ namespace BookStoreApi.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("BookStoreApi.Model.FavoriteBook", b =>
+                {
+                    b.Property<string>("HolderId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("HolderId");
+
+                    b.ToTable("FavoriteBooks");
+                });
+
+            modelBuilder.Entity("BookStoreApi.Model.Note", b =>
+                {
+                    b.Property<int>("noteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("bookId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("comment")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("noteId");
+
+                    b.ToTable("Notes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
