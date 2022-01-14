@@ -13,6 +13,7 @@ namespace BookStoreApi.Model
         {
 
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=bookStore.db");
