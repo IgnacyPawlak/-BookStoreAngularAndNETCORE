@@ -117,7 +117,7 @@ namespace BookStoreApi.Controllers
 
         private bool AuthenticateUser(LoginUserModel loginModel)
         {
-            var result = _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, true, lockoutOnFailure : false).Result;
+            var result = _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, false, lockoutOnFailure : false).Result;
 
             return result.Succeeded;
         }

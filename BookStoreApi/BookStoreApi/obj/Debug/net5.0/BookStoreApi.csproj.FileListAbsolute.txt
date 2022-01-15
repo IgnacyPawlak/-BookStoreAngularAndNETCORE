@@ -163,6 +163,7 @@ D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\ne
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\obj\Debug\net5.0\staticwebassets\BookStoreApi.StaticWebAssets.xml
+D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\appsettings.Development.json
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\appsettings.json
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\BookStoreApi.StaticWebAssets.xml
@@ -287,7 +288,6 @@ D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
@@ -313,7 +313,6 @@ D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.csproj.AssemblyReference.cache
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.GeneratedMSBuildEditorConfig.editorconfig
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.AssemblyInfoInputs.cache
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.AssemblyInfo.cs

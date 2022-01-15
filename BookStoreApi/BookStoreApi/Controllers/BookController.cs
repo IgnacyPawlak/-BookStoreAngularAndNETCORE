@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BookStoreApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
         private readonly DatabaseContext _context;
@@ -27,11 +27,10 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult Get()
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
-            if (user.UserType != UserType.NoAuthorize) return Unauthorized();
+            if (user.UserType == UserType.NoAuthorize) return Unauthorized();
 
             var tab = _context.BooksList.Where(x => x.AcceptedStatus == BookStatus._public);
             List<BookModel> mapTab = new List<BookModel>();
@@ -50,7 +49,6 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult Post([FromBody] BookModel input)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -68,7 +66,6 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpPatch]
-        [Authorize]
         public IActionResult Patch([FromBody] BookModel input)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -86,7 +83,6 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
         public IActionResult Delete(int id)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
