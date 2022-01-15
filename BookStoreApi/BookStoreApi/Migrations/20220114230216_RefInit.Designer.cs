@@ -3,14 +3,16 @@ using System;
 using BookStoreApi.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStoreApi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220114230216_RefInit")]
+    partial class RefInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,14 +24,14 @@ namespace BookStoreApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AcceptedStatus")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Author")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
@@ -262,12 +264,6 @@ namespace BookStoreApi.Migrations
             modelBuilder.Entity("BookStoreApi.Model.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("UserFullName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserType")
-                        .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("User");
                 });

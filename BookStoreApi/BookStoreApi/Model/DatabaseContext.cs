@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BookStoreApi.Model
 {
-    public class DatabaseContext: IdentityDbContext
+    public class DatabaseContext : IdentityDbContext
     {
-        public DatabaseContext(DbContextOptions options):base(options)
+        public DatabaseContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -19,10 +15,28 @@ namespace BookStoreApi.Model
             optionsBuilder.UseSqlite("Data Source=bookStore.db");
         }
 
-        public virtual DbSet<BookStoreUser> BookStoreUsers { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
-        public virtual DbSet<Book> Books { get; set; }
+            builder.Entity<Node>()
+                .HasKey(key => new { key.UserId, key.BookId });
 
-        public virtual DbSet<FavoriteBook> FavoriteBooks { get; set; }
+            builder.Entity<Node>()
+                .HasOne<User>(it => it.User)
+                .WithMany(i => i.BookList)
+                .HasForeignKey(x => x.UserId);
+
+            builder.Entity<Node>()
+                .HasOne<Book>(it => it.Book)
+                .WithMany(i => i.UsersList)
+                .HasForeignKey(x => x.BookId);
+        }
+
+        public virtual DbSet<User> UsersList { get; set; }
+
+        public virtual DbSet<Book> BooksList { get; set; }
+
+        public virtual DbSet<Node> NodesList { get; set; }
     }
 }

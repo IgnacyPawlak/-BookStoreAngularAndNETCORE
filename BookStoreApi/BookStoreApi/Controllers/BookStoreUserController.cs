@@ -13,36 +13,14 @@ namespace BookStoreApi.Controllers
     [ApiController]
     public class BookStoreUserController : ControllerBase
     {
-        private UserManager<BookStoreUser> _userManager;
-        private SignInManager<BookStoreUser> _signInManager;
+        private UserManager<User> _userManager;
+        private SignInManager<User> _signInManager;
 
-        public BookStoreUserController(UserManager<BookStoreUser> userManager, SignInManager<BookStoreUser> signInManager)
+        public BookStoreUserController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
-        [HttpPost]
-        [Route("Register")]
-        //POST : /api/BookStoreUser/Register
-        public async Task<Object> PostBookStoreUser(BookStoreUserModel model)
-        {
-            var bookStoreUser = new BookStoreUser()
-            {
-                UserName = model.UserName,
-                Email = model.Email,
-                FullName = model.FullName
-            };
-            try
-            {
-                var result = await _userManager.CreateAsync(bookStoreUser, model.Password);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-        }
     }
 }

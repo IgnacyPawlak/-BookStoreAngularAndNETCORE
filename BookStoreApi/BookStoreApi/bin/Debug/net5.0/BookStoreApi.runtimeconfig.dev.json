@@ -1,8 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\ziom5\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\ziom5\\.nuget\\packages"
+      "C:\\Users\\Jan\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Jan\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ]
   }
 }
