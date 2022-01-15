@@ -1,5 +1,6 @@
 ﻿using BookStoreApi.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace BookStoreApi.Controllers
     public class MyBookController : ControllerBase
     {
         private readonly DatabaseContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public MyBookController(DatabaseContext context)
+        public MyBookController(DatabaseContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
     }
 }

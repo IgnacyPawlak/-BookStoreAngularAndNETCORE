@@ -26,11 +26,13 @@ namespace BookStoreApi.Controllers
             _userManager = userManager;
         }
 
-        // GET: api/Book
         [HttpGet]
         [Authorize]
         public IActionResult Get()
         {
+            var user = _userManager.GetUserAsync(HttpContext.User).Result;
+            if (user.UserType != UserType.NoAuthorize) return Unauthorized();
+
             var tab = _context.BooksList.Where(x => x.AcceptedStatus == BookStatus._public);
             List<BookModel> mapTab = new List<BookModel>();
 
@@ -45,6 +47,24 @@ namespace BookStoreApi.Controllers
                 });
             }
             return Ok(mapTab);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Post([FromBody] BookModel input)
+        {
+            var user = _userManager.GetUserAsync(HttpContext.User).Result;
+            if (user.UserType != UserType.Admin) return Unauthorized();
+
+            _context.BooksList.Add(new Book
+            {
+                Title = input.Title,
+                Author = input.Author,
+                Description = input.Description,
+                AcceptedStatus = BookStatus._public
+            });
+            _context.SaveChanges();
+            return Ok();
         }
 
         [HttpPatch]
@@ -76,7 +96,7 @@ namespace BookStoreApi.Controllers
             {
                 case UserType.NoAuthorize:
                     return Unauthorized();
-                    break;
+                    //break;
                 case UserType.Normal:
                     buff = _context.BooksList.Where(x => x.Id == id 
                                                  && x.AcceptedStatus != BookStatus._public 
