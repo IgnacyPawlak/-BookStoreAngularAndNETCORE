@@ -6,102 +6,87 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BookStoreApi.Model;
+using Microsoft.AspNetCore.Authorization;
+using BookStoreApi.ConnectModel;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookStoreApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookController : ControllerBase
     {
         private readonly DatabaseContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public BookController(DatabaseContext context)
+        public BookController(DatabaseContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: api/Book
         [HttpGet]
-        public ActionResult<IEnumerable<Book>> GetBooks()
+        public IActionResult Get()
         {
-            return  _context.BooksList.ToList();
-        }
+            var tab = _context.BooksList.Where(x => x.AcceptedStatus == BookStatus._public);
+            List<BookModel> mapTab = new List<BookModel>();
 
-        // GET: api/Book/5
-        [HttpGet("{id}")]
-        public ActionResult<Book> GetBook(int id)
-        {
-            var book =  _context.BooksList.Find(id);
-
-            if (book == null)
+            foreach (var item in tab)
             {
-                return NotFound();
-            }
-
-            return book;
-        }
-
-        // PUT: api/Book/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public IActionResult PutBook(int id, Book book)
-        {
-            if (id != book.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(book).State = EntityState.Modified;
-
-            try
-            {
-                 _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
+                mapTab.Add(new BookModel
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                    BookId = item.Id,
+                    Title = item.Title,
+                    Author = item.Author,
+                    Description = item.Description
+                });
             }
-
-            return NoContent();
+            return Ok(mapTab);
         }
 
-        // POST: api/Book
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public ActionResult<Book> PostBook(Book book)
+        [HttpPatch]
+        public IActionResult Patch([FromBody] BookModel input)
         {
-            _context.BooksList.Add(book);
+            var user = _userManager.GetUserAsync(HttpContext.User).Result;
+            if (user.UserType != UserType.Admin) return Unauthorized();
+
+            var book = _context.BooksList.Where(x => x.Id == input.BookId && x.AcceptedStatus == BookStatus._public).ToList();
+
+            if (book.Count == 0) return BadRequest();
+
+            book.FirstOrDefault().Title = input.Title;
+            book.FirstOrDefault().Author = input.Author;
+            book.FirstOrDefault().Description = input.Description;
             _context.SaveChanges();
-
-            return CreatedAtAction("GetBook", new { id = book.Id }, book);
+            return Ok();
         }
 
-        // DELETE: api/Book/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteBook(int id)
+        [HttpDelete]
+        public IActionResult Delete(int id)
         {
-            var book = _context.BooksList.Find(id);
-            if (book == null)
+            var user = _userManager.GetUserAsync(HttpContext.User).Result;
+            List<Book> buff = new List<Book>();
+
+            switch (user.UserType)
             {
-                return NotFound();
+                case UserType.NoAuthorize:
+                    return Unauthorized();
+                    break;
+                case UserType.Normal:
+                    buff = _context.BooksList.Where(x => x.Id == id && x.AcceptedStatus != BookStatus._public).ToList();
+                    break;
+                case UserType.Admin:
+                    buff = _context.BooksList.Where(x => x.Id == id).ToList();
+                    break;
             }
 
-            _context.BooksList.Remove(book);
+            if (buff.Count == 0) return BadRequest();
+            _context.BooksList.Remove(buff.FirstOrDefault());
             _context.SaveChanges();
-
-            return NoContent();
+            return Ok();
         }
 
-        private bool BookExists(int id)
-        {
-            return _context.BooksList.Any(e => e.Id == id);
-        }
     }
 }

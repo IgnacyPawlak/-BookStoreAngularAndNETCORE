@@ -56,16 +56,25 @@ namespace BookStoreApi.Controllers
                                   UserFullName = InputModel.Name + " " + InputModel.SurName,
                                   UserType = UserType.NoAuthorize };
 
+            user.EmailConfirmed = true; // testing
+
             var result = _userManager.CreateAsync(user, InputModel.Password).Result;
 
             if (result.Succeeded)
             {
                 // Email do napisania
+                
 
                 res = Ok();
             }
-
             return res;
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult EmailVerification()
+        {
+            return NotFound();
         }
 
         private string GenerateJsonWebToken(LoginUserModel loginModel)
