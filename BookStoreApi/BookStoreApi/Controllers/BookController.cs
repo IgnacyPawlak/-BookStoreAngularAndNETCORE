@@ -28,6 +28,7 @@ namespace BookStoreApi.Controllers
 
         // GET: api/Book
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             var tab = _context.BooksList.Where(x => x.AcceptedStatus == BookStatus._public);
@@ -47,6 +48,7 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpPatch]
+        [Authorize]
         public IActionResult Patch([FromBody] BookModel input)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -64,6 +66,7 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -75,7 +78,10 @@ namespace BookStoreApi.Controllers
                     return Unauthorized();
                     break;
                 case UserType.Normal:
-                    buff = _context.BooksList.Where(x => x.Id == id && x.AcceptedStatus != BookStatus._public).ToList();
+                    buff = _context.BooksList.Where(x => x.Id == id 
+                                                 && x.AcceptedStatus != BookStatus._public 
+                                                 && x.UsersList.Count == 1 
+                                                 && x.UsersList.FirstOrDefault().UserId == user.Id).ToList();
                     break;
                 case UserType.Admin:
                     buff = _context.BooksList.Where(x => x.Id == id).ToList();
@@ -87,6 +93,5 @@ namespace BookStoreApi.Controllers
             _context.SaveChanges();
             return Ok();
         }
-
     }
 }
