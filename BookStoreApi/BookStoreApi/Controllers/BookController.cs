@@ -108,7 +108,7 @@ namespace BookStoreApi.Controllers
                     break;
             }
 
-            if (buff.Count == 0) return BadRequest();
+            if (buff.Count == 0) return NotFound();
             _context.BooksList.Remove(buff.FirstOrDefault());
             _context.SaveChanges();
             return Ok();

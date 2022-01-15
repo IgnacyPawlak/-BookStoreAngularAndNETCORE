@@ -1,5 +1,6 @@
 ﻿using BookStoreApi.ConnectModel;
 using BookStoreApi.Model;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace BookStoreApi.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-
+        
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Login([FromBody] LoginUserModel loginModel)
@@ -44,7 +45,15 @@ namespace BookStoreApi.Controllers
             }
             return res;
         }
-        
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync().Wait();
+            return Ok();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Registration([FromBody] RegistrationUserModel InputModel)
@@ -53,8 +62,8 @@ namespace BookStoreApi.Controllers
 
             var user = new User { UserName = InputModel.Email,  
                                   Email = InputModel.Email,
-                                  UserFullName = InputModel.Name + " " + InputModel.SurName,
-                                  UserType = UserType.NoAuthorize };
+                                  UserFullName = InputModel.FullName,
+                                  UserType = UserType.Normal };
 
             user.EmailConfirmed = true; // testing
 
@@ -76,6 +85,21 @@ namespace BookStoreApi.Controllers
         {
             return NotFound();
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult MyUser()
+        {
+            var user = _userManager.GetUserAsync(HttpContext.User).Result;
+            return Ok(new UserModel 
+            { 
+                Id = user.Id,
+                Email = user.Email,
+                FullName = user.UserFullName,
+                IsAdmin = user.UserType == UserType.Admin ? true : false
+            });
+        }
+
 
         private string GenerateJsonWebToken(LoginUserModel loginModel)
         {
