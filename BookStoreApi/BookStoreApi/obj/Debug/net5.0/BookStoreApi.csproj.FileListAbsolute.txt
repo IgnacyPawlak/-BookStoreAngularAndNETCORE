@@ -328,3 +328,4 @@ D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\ref\BookStoreApi.dll
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.pdb
 D:\Project\WSB\Stronki\BookStoreAngularAndNETCORE\BookStoreApi\BookStoreApi\obj\Debug\net5.0\BookStoreApi.genruntimeconfig.cache
+D:\studia\strony_internetowe\VisualStudio\BookStoreApi\BookStoreApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

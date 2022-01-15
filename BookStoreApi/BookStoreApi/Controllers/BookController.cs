@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Identity;
 namespace BookStoreApi.Controllers
 {
     [ApiController]
-    [Authorize]
     [Route("api/[controller]")]
     public class BookController : ControllerBase
     {
@@ -30,7 +29,7 @@ namespace BookStoreApi.Controllers
         public IActionResult Get()
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
-            if (user.UserType == UserType.NoAuthorize) return Unauthorized();
+            //if (user.UserType == UserType.NoAuthorize) return Unauthorized();
 
             var tab = _context.BooksList.Where(x => x.AcceptedStatus == BookStatus._public);
             List<BookModel> mapTab = new List<BookModel>();
@@ -52,7 +51,7 @@ namespace BookStoreApi.Controllers
         public IActionResult Post([FromBody] BookModel input)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
-            if (user.UserType != UserType.Admin) return Unauthorized();
+            //if (user.UserType != UserType.Admin) return Unauthorized();
 
             _context.BooksList.Add(new Book
             {

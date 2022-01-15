@@ -13,7 +13,6 @@ namespace BookStoreApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly DatabaseContext _context;
@@ -26,7 +25,6 @@ namespace BookStoreApi.Controllers
         }
         
         [HttpGet("ALL")]
-        [Authorize]
         public IActionResult Get()
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -49,7 +47,6 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult Get(string id)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -71,7 +68,6 @@ namespace BookStoreApi.Controllers
         
 
         [HttpPatch]
-        [Authorize]
         public IActionResult Patch([FromBody] PatchUserModel input)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
@@ -93,7 +89,6 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
         public IActionResult Delete(string id)
         {
             var user = _userManager.GetUserAsync(HttpContext.User).Result;
